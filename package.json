@@ -1,0 +1,19 @@
+{
+  "name": "postman-qa-commerce-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "test": "newman run collections/qa-commerce-api.postman_collection.json -e environments/qa-commerce.postman_environment.json",
+  "test:report": "newman run collections/qa-commerce-api.postman_collection.json -e environments/qa-commerce.postman_environment.json -r htmlextra --reporter-htmlextra-export reports/report.html",
+  "test:verbose": "newman run collections/qa-commerce-api.postman_collection.json -e environments/qa-commerce.postman_environment.json --verbose"
+},
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "newman": "^6.2.2",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "info": {
+    "_postman_id": "9f732e29-8b3c-4a6e-a56a-cbf3e1682aa2",
+    "name": "APIs Lojinha QA commerce",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38868312"
+  },
+  "item": [
+    {
+      "name": "Criação de usuário com sucesso",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"João C\",\r\n  \"email\": \"joao.c@example.com\",\r\n  \"password\": \"Password123!\",\r\n  \"isAdmin\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}/users"
+          ]
+        },
+        "description": "Generated from cURL: curl -X 'POST' \\\r\n  'http://localhost:3000/api/users' \\\r\n  -H 'accept: application/json' \\\r\n  -H 'Content-Type: application/json' \\\r\n  -d '{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"password\": \"Password123!\",\r\n  \"isAdmin\": false\r\n}'"
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set(\"token\", pm.response.json().token)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"joao.c@example.com\",\r\n  \"password\": \"Password123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login",
+          "host": [
+            "{{baseUrl}}/login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Alteração cadastro sucesso",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "{{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"João C\",\r\n  \"email\": \"joao.c@example.com\",\r\n  \"password\": \"123456\",\r\n  \"isAdmin\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2",
+          "host": [
+            "{{baseUrl}}/users"
+          ],
+          "path": [
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consulta",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users",
+          "host": [
+            "{{baseUrl}}/users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deletar usuario com sucesso",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODgsImlzQWRtaW4iOjEsImlhdCI6MTc3MjAyOTA2OSwiZXhwIjoxNzcyMDMyNjY5fQ.BDzAfm-yl-D70ZbRXo-R2Q2NiP_urKAQuxyLXLw9Kdg",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/users/88",
+          "host": [
+            "{{baseUrl}}/users"
+          ],
+          "path": [
+            "88"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
