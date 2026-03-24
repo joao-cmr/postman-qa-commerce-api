@@ -1,6 +1,6 @@
 # Postman + Newman - QA Commerce API Testing
 
-[![Newman API Tests](https://github.com/joao-cmr/postman-qa-commerce-api/actions/workflows/newman-tests.yml/badge.svg)](https://github.com/joao-cmr/postman-qa-commerce-api/actions/workflows/newman-tests.yml)
+[![Newman API Tests](https://github.com/joao-cmr/postman-qa-commerce-api/actions/workflows/newman-tests.yml/badge.svg?branch=main)](https://github.com/joao-cmr/postman-qa-commerce-api/actions/workflows/newman-tests.yml)
 
 Automação de testes de API para a aplicação **QA Commerce** utilizando Postman Collections e Newman CLI, com integração contínua via GitHub Actions.
 
