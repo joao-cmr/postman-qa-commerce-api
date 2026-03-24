@@ -12,15 +12,35 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout repository
+    - name: Checkout test repository
       uses: actions/checkout@v4
+      
+    - name: Checkout QA Commerce API
+      uses: actions/checkout@v4
+      with:
+        repository: joao-cmr/qa-commerce
+        path: qa-commerce
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
         
-    - name: Install dependencies
+    - name: Install API dependencies
+      working-directory: ./qa-commerce
+      run: npm install
+      
+    - name: Start QA Commerce API
+      working-directory: ./qa-commerce
+      run: |
+        npm start &
+        sleep 5
+        
+    - name: Wait for API to be ready
+      run: |
+        timeout 30 bash -c 'until curl -f http://localhost:3000/api/users; do sleep 2; done'
+        
+    - name: Install Newman dependencies
       run: npm ci
       
     - name: Run Newman tests
